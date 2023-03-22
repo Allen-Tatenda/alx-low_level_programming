@@ -1,5 +1,5 @@
 #include <stdio.h>
-// if not the last number, print comma and space
+/* if not the last number, print comma and space*/
 int main() {
     int a = 1, b = 2, c, i;
 
@@ -9,7 +9,7 @@ int main() {
         c = a + b;
         printf("%d", c);
 
-        if (i != 97) {  // if not the last number, print comma and space
+        if (i != 97) {
             printf(", ");
         }
 
