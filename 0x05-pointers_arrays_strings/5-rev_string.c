@@ -1,37 +1,35 @@
 #include "main.h"
 #include <stdio.h>
-void swap(char* a, char* b);
-void reverse(char* str);
 
-int main(){
-    char strArray[] = "1point3acres";
-    printf("Before Reverse: %s\n", strArray);
-    reverse(strArray);
-    printf("After Reverse: %s\n", strArray);
+/**
+  * rev_string - Reverses a string
+  * @s: The string to be modified
+  *
+  * Return: void
+  */
+void rev_string(char *s)
+{
+	int i, c, k;
+	char *a, aux;
+
+	a = s;
+
+	while (s[c] != '\0')
+	{
+		c++;
+	}
+
+	for (k = 1; k < c; k++)
+	{
+		a++;
+	}
+
+	for (i = 0; i < (c / 2); i++)
+	{
+		aux = s[i];
+		s[i] = *a;
+		*a = aux;
+		a--;
+	}
 }
 
-void swap(char* a, char* b){
-    char c = *a;
-    *a = *b;
-    *b = c;
-}
-
-void reverse(char* str) {
-    // handle the special case when it is an empty string
-    if (!*str) {
-        return;
-    }
-
-    // mark down the begin of the string
-    char* begin = str;
-
-    // pointing to the last character
-    char* end = begin + strlen(str) - 1;
-
-    // swap begin and end
-    while (begin < end) {
-        swap(begin, end);
-        begin++;
-        end--;
-    }
-}
