@@ -1,37 +1,37 @@
 #include "main.h"
 #include <stdio.h>
+void swap(char* a, char* b);
+void reverse(char* str);
 
-/**
-  * rev_string - Reverses a string
-  * @s: The string to be modified
-  *
-  * Return: void
-  */
-void rev_string(char *s)
-{
-	/*
- *   char *ptr = reverse(STR);
- *
- * Reverse the characters of STR[] in place, and return STR.
- */
-char *reverse(char *s) {
-  char ch, *p, *q;
-
-  /* Point q at the last character in s[], or at &s[0] if s is empty. */
-  for (q = s; *q != '\0'; ++q)
-    ;
-  if (q > s)
-    --q;
-  
-  /* Simultaneously sweep p from front to back and q from back to front,
-   * swapping characters at p and q, until the pointers meet. */
-  for (p = s; p < q; ++p, --q) {
-    ch = *p;
-    *p = *q;
-    *q = ch;
-  }
-
-  return s;
-}
+int main(){
+    char strArray[] = "1point3acres";
+    printf("Before Reverse: %s\n", strArray);
+    reverse(strArray);
+    printf("After Reverse: %s\n", strArray);
 }
 
+void swap(char* a, char* b){
+    char c = *a;
+    *a = *b;
+    *b = c;
+}
+
+void reverse(char* str) {
+    // handle the special case when it is an empty string
+    if (!*str) {
+        return;
+    }
+
+    // mark down the begin of the string
+    char* begin = str;
+
+    // pointing to the last character
+    char* end = begin + strlen(str) - 1;
+
+    // swap begin and end
+    while (begin < end) {
+        swap(begin, end);
+        begin++;
+        end--;
+    }
+}
