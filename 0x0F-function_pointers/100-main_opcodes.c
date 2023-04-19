@@ -1,55 +1,44 @@
 #include <stdio.h>
-#include "function_pointers.h"
+#include <stdlib.h>
 
 /**
- * is_98 - check if a number is equal to 98
- * @elem: the integer to check
+ * main - prints its own opcodes
+ * @argc: number of arguments
+ * @argv: array of arguments
  *
- * Return: 0 if false, something else otherwise.
+ * Return: Always 0 (Success)
  */
-int is_98(int elem)
+int main(int argc, char *argv[])
 {
-	return (98 == elem);
-}
+	int bytes, i;
+	char *arr;
 
-/**
- * is_strictly_positive - check if a number is greater than 0
- * @elem: the integer to check
- *
- * Return: 0 if false, something else otherwise.
- */
-int is_strictly_positive(int elem)
-{
-	return (elem > 0);
-}
+	if (argc != 2)
+	{
+		printf("Error\n");
+		exit(1);
+	}
 
+	bytes = atoi(argv[1]);
 
-/**
- * abs_is_98 - check if the absolute value of a number is 98
- * @elem: the integer to check
- *
- * Return: 0 if false, something else otherwise.
- */
-int abs_is_98(int elem)
-{
-	return (elem == 98 || -elem == 98);
-}
+	if (bytes < 0)
+	{
+		printf("Error\n");
+		exit(2);
+	}
 
-/**
- * main - check the code for Holberton School students.
- *
- * Return: Always 0.
- */
-int main(void)
-{
-	int array[20] = {0, -98, 98, 402, 1024, 4096, -1024, -98, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 98};
-	int index;
+	arr = (char *)main;
 
-	index = int_index(array, 20, is_98);
-	printf("%d\n", index);
-	index = int_index(array, 20, abs_is_98);
-	printf("%d\n", index);
-	index = int_index(array, 20, is_strictly_positive);
-	printf("%d\n", index);
+	for (i = 0; i < bytes; i++)
+	{
+		if (i == bytes - 1)
+		{
+			printf("%02hhx\n", arr[i]);
+			break;
+		}
+		printf("%02hhx ", arr[i]);
+	}
 	return (0);
 }
+
+
